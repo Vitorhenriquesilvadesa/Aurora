@@ -1,0 +1,7 @@
+namespace Aurora
+{
+	struct AurVirtualMachineSpecification
+	{
+
+	};
+}
