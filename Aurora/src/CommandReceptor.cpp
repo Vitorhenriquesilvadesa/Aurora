@@ -61,7 +61,7 @@ namespace Aurora
 
 	void CommandReceptor::Version(const std::vector<std::string>& args)
 	{
-		AUR_ASSERT(args.size() == 0, "--version cannot receive arguments.");
+		AUR_ASSERT(args.size() == 1, "--version cannot receive arguments.");
 		std::cout << "Aurora Alpha " << VERSION_UINT32 << ": " << VERSION_STRING << std::endl;
 	}
 
