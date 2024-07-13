@@ -9,5 +9,5 @@ namespace Aurora
 {
 	void Main();
 	void Main(int argc, char** argv);
-	void ArgumentDelegator(const std::vector<std::string> &args);
+	void ArgumentDelegation(const std::vector<std::string> &args);
 }

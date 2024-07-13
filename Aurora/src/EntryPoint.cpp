@@ -1,10 +1,11 @@
 #include "EntryPoint.h"
+#include "CommandReceptor.h"
 #include <iostream>
-#include <CompileSpecification.h>
+
 
 void Aurora::Main()
 {
-	Print();
+	CommandReceptor::CallRepl();
 }
 
 void Aurora::Main(int argc, char** argv)
@@ -16,10 +17,12 @@ void Aurora::Main(int argc, char** argv)
 		args.push_back(argv[i]);
 	}
 
-	ArgumentDelegator(args);
+	ArgumentDelegation(args);
 }
 
-void Aurora::ArgumentDelegator(const std::vector<std::string>& args)
+void Aurora::ArgumentDelegation(const std::vector<std::string>& args)
 {
-	// Parse args implementation here.
+	std::vector<std::string> filteredArgs(args.begin() + 1, args.end());
+
+	CommandReceptor::Execute(filteredArgs);
 }
