@@ -67,6 +67,7 @@ namespace Aurora
 
 	void CommandReceptor::CompileFile(const std::vector<std::string>& args)
 	{
+		AUR_ASSERT(args.size() == 1, "Target file not found. Try like '-c myFile.aur'");
 		AUR_ASSERT(args.size() == 2, "Invalid input for main file. Try provides only the file with a 'main' function.");
 		
 		std::string relativePath = args[1];
@@ -78,6 +79,7 @@ namespace Aurora
 
 	void CommandReceptor::ExecuteFile(const std::vector<std::string>& args)
 	{
+		AUR_ASSERT(args.size() == 1, "Target file not found. Try like '-c myFile.avm'");
 		AUR_ASSERT(args.size() == 2, "Invalid input for main file. Try provides only the file with bytecode (.avm file).");
 
 		std::string relativePath = args[1];
