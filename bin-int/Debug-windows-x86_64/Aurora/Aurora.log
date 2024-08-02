@@ -1,2 +1,36 @@
 ﻿  CommandReceptor.cpp
-  Aurora.vcxproj -> C:\Github\CPlusPlus\Aurora\bin\Debug-windows-x86_64\Aurora\Aurora.exe
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(48,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(49,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(43,21): warning C4251: 'Aurora::Scanner::m_Source': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(44,28): warning C4251: 'Aurora::Scanner::m_Tokens': class 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(22,34): warning C4251: 'Aurora::AurCompiler::m_Scanner': class 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::AurCompiler'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  consulte a declaração de 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>'
+  
+  Main.cpp
+  Gerando Código...
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(6,2): error C2760: erro de sintaxe: '[' não era esperado aqui; o esperado era '{'
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(6,21): error C2760: erro de sintaxe: ']' não era esperado aqui; o esperado era '{'
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(6,24): error C2059: erro de sintaxe: 'attribute specifier'
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(8,4): warning C5030: o atributo [[for::if]] não foi reconhecido
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(9,3): error C2143: erro de sintaxe: ';' ausente antes de '{'
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(9,3): error C2447: '{': faltando cabeçalho de função (lista formal de estilo antigo?)
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(9,15): error C2059: erro de sintaxe: '.'
+C:\Github\CPlusPlus\Aurora\Aurora\src\Main.cpp(13,15): error C3536: 'funcao': não pode ser usado antes de ser inicializado

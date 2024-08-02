@@ -1,99 +1,73 @@
+#pragma once
 #include <cstdint>
 #include <string>
+#include "Core.h"
 
 namespace Aurora
 {
-    enum class TokenType {
-        // Primitive types.
-        IDENTIFIER,    // Variables, function names, etc.
-        INT,           // 'int' for integer type
-        FLOAT,         // 'float' for floating-point type
-        BYTE,          // 'byte' for char type
-        STRING,        // 'string' for string type
-        BOOL,          // 'bool' for boolean type
+#define TOKEN_TYPE_LIST \
+X(Bool) X(Byte) X(Int) X(Float) X(String) \
+X(Char) X(Nullable) X(NullValue) \
+\
+X(Class) X(Actor) X(Async) X(Parallel) X(Struct) \
+X(Function) X(Method) X(Public) X(Locked) \
+X(Const) X(Mutable) X(Import) X(Macro) \
+X(Summary) X(Lock) X(If) X(Else) X(For) X(While) \
+X(Do) X(Foreach) X(True) X(False) \
+\
+X(Plus) X(Minus) X(Star) X(Slash) X(Mod) X(PlusPlus) \
+X(MinusMinus) X(StarStar) X(SlashSlash) X(Mark) X(MarkEqual) \
+X(Less) X(Greater) X(Equal) X(LessEqual) X(GreaterEqual) \
+X(EqualEqual) X(QuestionQuestion) X(QuestionEqual) \
+X(PlusEqual) X(MinusEqual) X(StarEqual) X(SlashEqual) \
+X(ModEqual) X(And) X(Or) X(BitwiseAnd) X(BitwiseOr) \
+X(BitwiseNot) X(Message) \
+\
+X(LeftParen) X(RightParen) X(LeftBracket) X(RightBracket) \
+X(LeftBrace) X(RightBrace) X(Semicolon) X(Dot) X(Comma) \
+X(Colon) X(AtSign) X(Dollar) X(Hash) X(ShiftL) X(ShiftR) \
+\
+X(Identifier) X(Lambda) X(Comment) X(Newline) X(Whitespace) \
+X(BitwiseAndEqual) X(BitwiseOrEqual) X(BitwiseNotEqual) \
+X(BitwiseXorEqual) X(BitwiseXor) X(DoubleDot) X(RightShift) \
+X(LeftShift) X(ErrorToken) X(Define)
 
-        // Keywords
-        VAR,           // 'var' for mutable variables
-        FUNCTION,      // 'function' for function declarations
-        METHOD,        // 'method' for method declarations
-        MESSAGE,       // 'message' for message declarations
-        RETURN,        // 'return' for returning values from functions
-        THROW,         // 'throw' for raise errors during runtime.
-        IF,            // 'if' for conditional structures
-        ELSE,          // 'else' for conditional structures
-        THEN,          // 'then' for enhanced for loops
-        FOR,           // 'for' for loops
-        WHILE,         // 'while' for loops
-        BREAK,         // 'break' for exiting loops
-        CONTINUE,      // 'continue' for continuing to the next iteration of loops
-        TRUE,          // 'true' boolean literal
-        FALSE,         // 'false' boolean literal
-        NULL_LITERAL,  // 'null' null literal
-        PRINT,         // 'print' for outputting data
-        CONST,         // 'const' for declaring constants
-        CLASS,         // 'class' for class definitions
-        ACTOR,         // 'actor' for actor definitions
-        EXTENDS,       // ':' for class inheritance
-        THIS,          // 'this' for referencing the current instance of a class
-        SUPER,         // 'super' for referencing the superclass
-        IMPORT,        // 'import' for importing modules
-        EXPORT,        // 'export' for exporting modules
-        ASYNC,         // 'async' for defining asynchronous functions
-        AWAIT,         // 'await' for waiting for asynchronous functions to complete
-        KERNEL,        // 'kernel' for defining functions that run on the GPU
-
-        // Operators
-        PLUS,          // '+'
-        MINUS,         // '-'
-        STAR,          // '*'
-        SLASH,         // '/'
-        PERCENT,       // '%'
-        EQUAL,         // '='
-        BANG,          // '!'
-        EQUAL_EQUAL,   // '=='
-        BANG_EQUAL,    // '!='
-        LESS,          // '<'
-        LESS_EQUAL,    // '<='
-        GREATER,       // '>'
-        GREATER_EQUAL, // '>='
-        AND,           // '&&'
-        OR,            // '||'
-        PLUS_PLUS,     // '++'
-        MINUS_MINUS,   // '--'
-        PLUS_EQUAL,    // '+='
-        MINUS_EQUAL,   // '-='
-        STAR_EQUAL,    // '*='
-        SLASH_EQUAL,   // '/='
-        PERCENT_EQUAL, // '%='
-
-        // Delimiters
-        LEFT_PAREN,    // '('
-        RIGHT_PAREN,   // ')'
-        LEFT_BRACE,    // '{'
-        RIGHT_BRACE,   // '}'
-        LEFT_BRACKET,  // '['
-        RIGHT_BRACKET, // ']'
-        SEMICOLON,     // ';'
-        COMMA,         // ','
-        DOT,           // '.'
-
-        // End of File
-        END_OF_FILE    // Indicates end of file
+    enum class TokenType
+    {
+#define X(name) name,
+        TOKEN_TYPE_LIST
+        #undef X
     };
 
-    struct Token {
-        TokenType type;         
-        std::string lexeme;     
-        int line;               
-        int column;             
-        int startPosition;      
-        int endPosition;        
-        std::string filePath;   
-        bool isPartOfMultiToken;
+    inline std::string TokenTypeToString(TokenType type)
+    {
+        switch (type)
+        {
+#define X(name) case TokenType::name: return #name;
+            TOKEN_TYPE_LIST
+            #undef X
+            default: return "Unknown TokenType";
+        }
+    }
 
-        Token(TokenType type, const std::string& lexeme, int line, int column,
-            int startPosition, int endPosition, bool isPartOfMultiToken = false, const std::string& filePath = "")
-            : type(type), lexeme(lexeme), line(line), column(column),
-            startPosition(startPosition), endPosition(endPosition), isPartOfMultiToken(isPartOfMultiToken), filePath(filePath) {}
+    class AUR_API Token
+    {
+    public:
+        uint32_t line;
+        uint32_t column;
+        TokenType type;
+        std::string lexeme;
+        std::string literal;
+
+        Token(uint32_t line, uint32_t column, TokenType type, std::string lexeme, std::string value);
     };
+
+    inline Token::Token(const uint32_t line, const uint32_t column, const TokenType type, std::string lexeme,
+                        std::string value): line(line),
+                                            column(column),
+                                            type(type),
+                                            lexeme(std::move(lexeme)),
+                                            literal(std::move(value))
+    {
+    }
 }

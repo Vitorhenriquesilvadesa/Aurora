@@ -23,7 +23,7 @@ project "AuroraCore"
 		"%{prj.name}/**.cpp"
 	}
 
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
 	filter "configurations:Debug"
@@ -58,7 +58,7 @@ project "AuroraVM"
 		"AuroraCore"
 	}
 
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
     postbuildcommands
@@ -103,7 +103,7 @@ project "AuroraCompiler"
 		"AuroraCore"
 	}
 
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
     postbuildcommands
@@ -152,7 +152,7 @@ project "Aurora"
 		"AuroraCore"
 	}
 
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
     postbuildcommands

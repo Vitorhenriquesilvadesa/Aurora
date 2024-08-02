@@ -1,2 +1,5 @@
-C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\Compiler.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\CompileSpecification.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\CompileSpecification.obj
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\Compiler.obj
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\ScanSpecification.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\ScanSpecification.obj
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\ScannedData.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\ScannedData.obj
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\Scanner.obj

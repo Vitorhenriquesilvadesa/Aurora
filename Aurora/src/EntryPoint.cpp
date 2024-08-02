@@ -22,7 +22,7 @@ void Aurora::Main(int argc, char** argv)
 
 void Aurora::ArgumentDelegation(const std::vector<std::string>& args)
 {
-	std::vector<std::string> filteredArgs(args.begin() + 1, args.end());
+	std::vector filteredArgs(args.begin() + 1, args.end());
 
 	CommandReceptor::Execute(filteredArgs);
 }
