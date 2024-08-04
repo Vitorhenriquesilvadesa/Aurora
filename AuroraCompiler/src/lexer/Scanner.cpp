@@ -6,7 +6,7 @@
 #include "ScannedData.h"
 
 
-namespace Aurora
+namespace Aurora::FrontEnd
 {
     static std::unordered_map<std::string, TokenType> keywords =
     {
@@ -48,9 +48,7 @@ namespace Aurora
     {
         m_Spec = specification;
     }
-
-    Scanner::~Scanner() = default;
-
+    
     ScannedData Scanner::Scan(const std::string& source)
     {
         m_Start = 0;
@@ -81,9 +79,6 @@ namespace Aurora
 
     void Scanner::ScanToken()
     {
-        SkipWhitespace();
-
-        SCAN_LOG_INFO("Before: '{}'", Peek());
         switch (Peek())
         {
         case '+':
@@ -124,7 +119,7 @@ namespace Aurora
             break;
         case '|':
             if (Match('=')) MakeToken(TokenType::BitwiseOrEqual);
-            else if (Match('|')) MakeToken(TokenType::Or);
+            else if (Match('|')) MakeToken(TokenType::Pipe);
             else MakeToken(TokenType::BitwiseOr);
             break;
         case '(':
@@ -187,7 +182,6 @@ namespace Aurora
             MakeToken(TokenType::Hash);
             break;
         case '\n':
-            SCAN_LOG_INFO("NewLine");
             Advance();
             m_Line++;
             m_Column = 1;
@@ -217,7 +211,6 @@ namespace Aurora
             m_HasError = true;
         }
         Advance();
-        SCAN_LOG_INFO("After: '{}'", Peek());
     }
 
     void Scanner::SkipWhitespace()
@@ -226,19 +219,19 @@ namespace Aurora
         {
             switch (Peek())
             {
-                case ' ':
-                case '\t':
-                    Advance();
-                    m_Column++;
-                    break;
-                case '\n':
-                    Advance();
-                    m_Line++;
-                    m_Column = 1;
-                    break;
-                default:
-                    SyncCursors();
-                    return;
+            case ' ':
+            case '\t':
+                Advance();
+                m_Column++;
+                break;
+            case '\n':
+                Advance();
+                m_Line++;
+                m_Column = 1;
+                break;
+            default:
+                SyncCursors();
+                return;
             }
         }
     }
@@ -381,10 +374,6 @@ namespace Aurora
 
         std::string lexeme = m_Source.substr(m_Start, m_Current - m_Start);
         MakeToken(isFloat ? TokenType::Float : TokenType::Int, lexeme);
-    }
-
-    void Scanner::IEEEScientificNotationNumber()
-    {
     }
 
     bool Scanner::IsHexDigit(char c) const

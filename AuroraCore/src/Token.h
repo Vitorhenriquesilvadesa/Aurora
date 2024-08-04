@@ -20,7 +20,7 @@ X(MinusMinus) X(StarStar) X(SlashSlash) X(Mark) X(MarkEqual) \
 X(Less) X(Greater) X(Equal) X(LessEqual) X(GreaterEqual) \
 X(EqualEqual) X(QuestionQuestion) X(QuestionEqual) \
 X(PlusEqual) X(MinusEqual) X(StarEqual) X(SlashEqual) \
-X(ModEqual) X(And) X(Or) X(BitwiseAnd) X(BitwiseOr) \
+X(ModEqual) X(And) X(Pipe) X(BitwiseAnd) X(BitwiseOr) \
 X(BitwiseNot) X(Message) \
 \
 X(LeftParen) X(RightParen) X(LeftBracket) X(RightBracket) \

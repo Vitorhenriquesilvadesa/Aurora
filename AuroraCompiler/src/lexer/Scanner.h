@@ -13,22 +13,17 @@
     } \
 } while(false)
 
-namespace Aurora
+namespace Aurora::FrontEnd
 {
-    enum class NumberNotation
-    {
-        Decimal, Hexadecimal, Binary, IEEE
-    };
-    
     class AUR_API Scanner
     {
     public:
         Scanner();
         explicit Scanner(const ScanSpecification& specification);
-        ~Scanner();
+        ~Scanner() = default;
         ScannedData Scan(const std::string& source);
 
-        template<typename... Args>
+        template <typename... Args>
         void PushError(const std::string& message, Args&&... args);
         void ScanToken();
         void SkipWhitespace();
@@ -37,23 +32,22 @@ namespace Aurora
         void Identifier();
         void String();
         void Number();
-        bool IsAtEnd() const;
+        [[nodiscard]] bool IsAtEnd() const;
         void Advance();
-        char Previous() const;
+        [[nodiscard]] char Previous() const;
         void HexadecimalNumber();
         void BinaryNumber();
         void DecimalNumber();
-        void IEEEScientificNotationNumber();
-        bool IsHexDigit(char c) const;
+        [[nodiscard]] bool IsHexDigit(char c) const;
         bool IsDigit(char c);
         bool IsAlpha(char c);
         bool IsAlphaNumeric(char c);
         bool Check(char c);
-        char Peek() const;
+        [[nodiscard]] char Peek() const;
         bool Match(char c);
 
-        bool HasError() const { return m_HasError; }
-        std::vector<std::string> GetErrorStack() const { return m_ErrorStack; }
+        [[nodiscard]] bool HasError() const { return m_HasError; }
+        [[nodiscard]] std::vector<std::string> GetErrorStack() const { return m_ErrorStack; }
 
     private:
         ScanSpecification m_Spec;
