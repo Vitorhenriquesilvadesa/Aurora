@@ -13,7 +13,7 @@
     } \
 } while(false)
 
-namespace Aurora::FrontEnd
+namespace Aurora
 {
     class AUR_API Scanner
     {

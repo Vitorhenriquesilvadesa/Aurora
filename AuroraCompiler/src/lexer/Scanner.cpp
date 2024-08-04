@@ -6,7 +6,7 @@
 #include "ScannedData.h"
 
 
-namespace Aurora::FrontEnd
+namespace Aurora
 {
     static std::unordered_map<std::string, TokenType> keywords =
     {
@@ -48,7 +48,7 @@ namespace Aurora::FrontEnd
     {
         m_Spec = specification;
     }
-    
+
     ScannedData Scanner::Scan(const std::string& source)
     {
         m_Start = 0;
@@ -68,6 +68,13 @@ namespace Aurora::FrontEnd
         }
 
         ScannedData data = ScannedData(m_Tokens);
+
+        for (const auto& token : data.Data)
+        {
+            SCAN_LOG_INFO("Token[type: {}, lexeme: {}, literal: {}]", TokenTypeToString(token.type), token.lexeme,
+                          token.literal);
+        }
+
         return data;
     }
 
