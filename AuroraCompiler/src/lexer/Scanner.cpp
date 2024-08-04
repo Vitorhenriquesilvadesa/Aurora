@@ -1,4 +1,4 @@
-﻿#include "Scanner.h"
+#include "Scanner.h"
 #include <format>
 #include <Token.h>
 #include <unordered_map>
@@ -48,7 +48,7 @@ namespace Aurora
     {
         m_Spec = specification;
     }
-    
+
     ScannedData Scanner::Scan(const std::string& source)
     {
         m_Start = 0;
@@ -68,6 +68,12 @@ namespace Aurora
         }
 
         ScannedData data = ScannedData(m_Tokens);
+
+        for (const auto& token : data.Data)
+        {
+            SCAN_LOG_INFO("Token[type: {}, lexeme: {}, literal: {}]", TokenTypeToString(token.type), token.lexeme,
+                          token.literal);
+        }
 
         for(const auto& token : data.Data)
         {
