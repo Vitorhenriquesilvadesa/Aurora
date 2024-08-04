@@ -68,6 +68,12 @@ namespace Aurora::FrontEnd
         }
 
         ScannedData data = ScannedData(m_Tokens);
+
+        for(const auto& token : data.Data)
+        {
+            SCAN_LOG_INFO("Token[type: {}, lexeme: {}, literal: {}]", TokenTypeToString(token.type), token.lexeme, token.literal);
+        }
+        
         return data;
     }
 
