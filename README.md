@@ -33,4 +33,4 @@ o bytecode e a versão da AVM.
 - Aurora: É a aplicação cliente que utiliza todos os módulos do pipeline de
 compilação para executar as funcionalidades de cada um. Além disso, este
 módulo conta com execução dos comandos disponíveis na linguagem, como
-"--help", "--version", "-c", "-e", entre outros.
+"--help", "--version", "-c", "-e", entre outros. 
