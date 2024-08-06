@@ -403,6 +403,17 @@ namespace Aurora
                 Identifier();
                 break;
             }
+            else if(Peek() != '\0')
+            {
+                char c = Peek();
+                MakeToken(TokenType::ErrorToken, "", std::format("{}", c));
+                PushError("Unexpected character '{}' at line {} in column {}.", c, m_Line, m_Column);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::EndOfFile);
+            }
 
             break;
         }
@@ -420,6 +431,8 @@ namespace Aurora
     void Scanner::MakeToken(TokenType type, const std::string& lexeme, const std::string& literal)
     {
         m_Tokens.emplace_back(Token(m_Line, m_Column, type, lexeme, literal));
+        Index delta = m_Current - m_Start;
+        m_Column += delta;
     }
 
     void Scanner::Identifier()
@@ -444,14 +457,11 @@ namespace Aurora
         }
         
         MakeToken(TokenType::String, "", m_Source.substr(m_Start + 1, m_Current - m_Start - 2));
-        
-        Advance();
     }
 
     void Scanner::Char()
     {
         char c = Advance();
-        Advance();
         Advance();
 
         MakeToken(TokenType::Char, "", std::format("{}", c));
@@ -531,8 +541,7 @@ namespace Aurora
             }
             if(Peek() == '.')
             {
-                PushError("Invalid float notation, only one dot in floating point number.");
-                m_HasError = true;
+                PushError("Invalid float notation, only one dot in floating point number in line {} in column {}.", m_Line, m_Column);
             }
             MakeToken(TokenType::Float, "", m_Source.substr(m_Start, m_Current - m_Start));
         }
@@ -590,6 +599,10 @@ namespace Aurora
     template <typename... Args>
     void Scanner::PushError(const std::string& message, Args&&... args)
     {
-        m_ErrorStack.emplace_back(std::vformat(message, std::make_format_args(std::forward<Args>(args)...)));
+        if(m_Spec.PushErrors)
+        {
+            m_ErrorStack.emplace_back(std::vformat(message, std::make_format_args(std::forward<Args>(args)...)));
+            m_HasError = true;
+        }
     }
 }

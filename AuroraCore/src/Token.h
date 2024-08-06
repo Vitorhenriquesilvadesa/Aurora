@@ -31,7 +31,7 @@ X(Identifier) X(Lambda) X(Comment) X(Newline) X(Whitespace) \
 X(BitwiseAndEqual) X(BitwiseOrEqual) X(BitwiseNotEqual) \
 X(BitwiseXorEqual) X(BitwiseXor) X(DoubleDot) X(RightShift) \
 X(LeftShift) X(ErrorToken) X(Define) X(RightShiftEqual) X(LeftShiftEqual) \
-X(Or) X(DubleQuestionEqual) X(Question) X(TripleDot)
+X(Or) X(DubleQuestionEqual) X(Question) X(TripleDot) X(EndOfFile)
 
     enum class TokenType
     {

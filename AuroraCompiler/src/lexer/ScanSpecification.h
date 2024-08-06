@@ -9,5 +9,6 @@ namespace Aurora
     struct AUR_API ScanSpecification
     {
         Spec LogLexingPass : DefaultBit(Disabled);
+        Spec PushErrors    : DefaultBit(Enabled);
     };
 }

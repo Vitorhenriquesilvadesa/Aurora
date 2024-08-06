@@ -8,7 +8,7 @@ namespace Aurora
 {
     AurCompiler::AurCompiler()
     {
-        m_Scanner = std::make_unique<Scanner>(ScanSpecification{.LogLexingPass = Enabled});
+        m_Scanner = std::make_unique<Scanner>(ScanSpecification{.LogLexingPass = Disabled, .PushErrors = Disabled});
     }
 
     bool AurCompiler::Compile(const std::string& absoluteMainFilepath)
