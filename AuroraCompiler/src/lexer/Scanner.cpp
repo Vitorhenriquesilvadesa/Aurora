@@ -429,7 +429,9 @@ namespace Aurora
             Advance();
         }
 
-        MakeToken(TokenType::Identifier, m_Source.substr(m_Start, m_Current - m_Start));
+        std::string word = m_Source.substr(m_Start, m_Current - m_Start);
+        
+        MakeToken(keywords.contains(word) ? keywords[word] : TokenType::Identifier, word);
     }
 
     void Scanner::String()
