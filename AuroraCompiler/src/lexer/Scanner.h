@@ -31,9 +31,10 @@ namespace Aurora
         void MakeToken(TokenType type, const std::string& lexeme = "", const std::string& literal = "");
         void Identifier();
         void String();
+        void Char();
         void Number();
         [[nodiscard]] bool IsAtEnd() const;
-        void Advance();
+        char Advance();
         [[nodiscard]] char Previous() const;
         void HexadecimalNumber();
         void BinaryNumber();
@@ -44,6 +45,7 @@ namespace Aurora
         bool IsAlphaNumeric(char c);
         bool Check(char c);
         [[nodiscard]] char Peek() const;
+        [[nodiscard]] char PeekNext() const;
         bool Match(char c);
 
         [[nodiscard]] bool HasError() const { return m_HasError; }

@@ -6,7 +6,7 @@
 namespace Aurora
 {
 #define TOKEN_TYPE_LIST \
-X(Bool) X(Byte) X(Int) X(Float) X(String) \
+X(Bool) X(Byte) X(Decimal) X(Hexadecimal) X(Binary) X(Float) X(String) \
 X(Char) X(Nullable) X(NullValue) \
 \
 X(Class) X(Actor) X(Async) X(Parallel) X(Struct) \
@@ -30,7 +30,8 @@ X(Colon) X(AtSign) X(Dollar) X(Hash) X(ShiftL) X(ShiftR) \
 X(Identifier) X(Lambda) X(Comment) X(Newline) X(Whitespace) \
 X(BitwiseAndEqual) X(BitwiseOrEqual) X(BitwiseNotEqual) \
 X(BitwiseXorEqual) X(BitwiseXor) X(DoubleDot) X(RightShift) \
-X(LeftShift) X(ErrorToken) X(Define)
+X(LeftShift) X(ErrorToken) X(Define) X(RightShiftEqual) X(LeftShiftEqual) \
+X(Or) X(DubleQuestionEqual) X(Question) X(TripleDot)
 
     enum class TokenType
     {

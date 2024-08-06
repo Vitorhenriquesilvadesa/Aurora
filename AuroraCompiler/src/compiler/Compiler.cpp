@@ -24,11 +24,6 @@ namespace Aurora
                 AUR_INFO("Error in file '{}': {}", absoluteMainFilepath, error);
             }
         }
-
-        for(const auto& token : data.Data)
-        {
-            AUR_INFO("{} | '{}'", TokenTypeToString(token.type), token.lexeme);
-        }
         
         return true;
     }

@@ -5,7 +5,6 @@
 #include "Logging.h"
 #include "ScannedData.h"
 
-
 namespace Aurora
 {
     static std::unordered_map<std::string, TokenType> keywords =
@@ -35,6 +34,7 @@ namespace Aurora
         {"summary", TokenType::Summary},
         {"lock", TokenType::Lock},
         {"define", TokenType::Define},
+        {"float", TokenType::Float},
     };
 
     Scanner::Scanner()
@@ -64,6 +64,7 @@ namespace Aurora
 
         while (!IsAtEnd())
         {
+            SyncCursors();
             ScanToken();
         }
 
@@ -78,169 +79,337 @@ namespace Aurora
         return data;
     }
 
-    template <typename... Args>
-    void Scanner::PushError(const std::string& message, Args&&... args)
-    {
-        m_ErrorStack.emplace_back(std::vformat(message, std::make_format_args(std::forward<Args>(args)...)));
-    }
-
     void Scanner::ScanToken()
     {
-        switch (Peek())
+        switch(Advance())
         {
         case '+':
-            if (Match('+')) MakeToken(TokenType::PlusPlus);
-            else if (Match('=')) MakeToken(TokenType::PlusEqual);
-            else MakeToken(TokenType::Plus);
-            break;
+        {
+            if (Match('+'))
+            {
+                MakeToken(TokenType::PlusPlus);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::PlusEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Plus);
+                break;
+            }
+        }
+
         case '-':
-            if (Match('-')) MakeToken(TokenType::MinusMinus);
-            else if (Match('=')) MakeToken(TokenType::MinusEqual);
-            else MakeToken(TokenType::Minus);
-            break;
+        {
+            if (Match('-'))
+            {
+                MakeToken(TokenType::MinusMinus);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::MinusEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Minus);
+                break;
+            }
+        }
+
         case '*':
-            if (Match('*')) MakeToken(TokenType::StarStar);
-            else if (Match('=')) MakeToken(TokenType::StarEqual);
-            else MakeToken(TokenType::Star);
-            break;
+        {
+            if (Match('*'))
+            {
+                MakeToken(TokenType::StarStar);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::StarEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Star);
+                break;
+            }
+        }
+
         case '/':
-            if (Match('/')) MakeToken(TokenType::SlashSlash);
-            else if (Match('=')) MakeToken(TokenType::SlashEqual);
-            else MakeToken(TokenType::Slash);
-            break;
-        case '=':
-            if (Match('=')) MakeToken(TokenType::EqualEqual);
-            else MakeToken(TokenType::Equal);
-            break;
-        case '@':
-            MakeToken(TokenType::AtSign);
-            break;
-        case '!':
-            if (Match('=')) MakeToken(TokenType::MarkEqual);
-            else MakeToken(TokenType::Mark);
-            break;
-        case '&':
-            if (Match('=')) MakeToken(TokenType::BitwiseAndEqual);
-            else if (Match('&')) MakeToken(TokenType::And);
-            else MakeToken(TokenType::BitwiseAnd);
-            break;
-        case '|':
-            if (Match('=')) MakeToken(TokenType::BitwiseOrEqual);
-            else if (Match('|')) MakeToken(TokenType::Pipe);
-            else MakeToken(TokenType::BitwiseOr);
-            break;
-        case '(':
-            MakeToken(TokenType::LeftParen);
-            break;
-        case ')':
-            MakeToken(TokenType::RightParen);
-            break;
-        case '[':
-            MakeToken(TokenType::LeftBracket);
-            break;
-        case ']':
-            MakeToken(TokenType::RightBracket);
-            break;
-        case '{':
-            MakeToken(TokenType::LeftBrace);
-            break;
-        case '}':
-            MakeToken(TokenType::RightBrace);
-            break;
-        case '~':
-            if (Match('=')) MakeToken(TokenType::BitwiseNotEqual);
-            else MakeToken(TokenType::BitwiseNot);
-            break;
-        case '^':
-            if (Match('=')) MakeToken(TokenType::BitwiseXorEqual);
-            else MakeToken(TokenType::BitwiseXor);
-            break;
-        case '.':
-            if (Match('.')) MakeToken(TokenType::DoubleDot);
-            else MakeToken(TokenType::Dot);
-            break;
-        case ',':
-            MakeToken(TokenType::Comma);
-            break;
-        case ';':
-            MakeToken(TokenType::Semicolon);
-            break;
-        case ':':
-            MakeToken(TokenType::Colon);
-            break;
-        case '>':
-            if (Match('=')) MakeToken(TokenType::GreaterEqual);
-            else if (Match('>')) MakeToken(TokenType::RightShift);
-            else MakeToken(TokenType::Greater);
-            break;
-        case '<':
-            if (Match('=')) MakeToken(TokenType::LessEqual);
-            else if (Match('<')) MakeToken(TokenType::LeftShift);
-            else MakeToken(TokenType::Less);
-            break;
+        {
+            if (Match('/'))
+            {
+                MakeToken(TokenType::SlashSlash);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::SlashEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Slash);
+                break;
+            }
+        }
+
         case '%':
-            if (Match('=')) MakeToken(TokenType::ModEqual);
-            else MakeToken(TokenType::Mod);
-            break;
-        case '$':
-            MakeToken(TokenType::Dollar);
-            break;
+        {
+            if (Match('='))
+            {
+                MakeToken(TokenType::ModEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Mod);
+                break;
+            }
+        }
+
+        case '!':
+        {
+            if (Match('='))
+            {
+                MakeToken(TokenType::MarkEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Mark);
+                break;
+            }
+        }
+
+        case '=':
+        {
+            if (Match('='))
+            {
+                MakeToken(TokenType::EqualEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Equal);
+                break;
+            }
+        }
+
+        case '?':
+        {
+            if (Match('?'))
+            {
+                if (Match('='))
+                {
+                    MakeToken(TokenType::DubleQuestionEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::QuestionQuestion);
+                    break;
+                }
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::QuestionEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Question);
+                break;
+            }
+        }
+
+        case '>':
+        {
+            if (Match('>'))
+            {
+                if (Match('='))
+                {
+                    MakeToken(TokenType::RightShiftEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::RightShift);
+                    break;
+                }
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::GreaterEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Greater);
+                break;
+            }
+        }
+
+        case '<':
+        {
+            if (Match('<'))
+            {
+                if (Match('='))
+                {
+                    MakeToken(TokenType::LeftShiftEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::LeftShift);
+                    break;
+                }
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::LessEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Less);
+                break;
+            }
+        }
+        
+        case '|':
+        {
+            if (Match('|'))
+            {
+                MakeToken(TokenType::Or);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::BitwiseOrEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::Pipe);
+                break;
+            }
+        }        
+
+        case '&':
+        {
+            if (Match('&'))
+            {
+                MakeToken(TokenType::And);
+                break;
+            }
+            else if (Match('='))
+            {
+                MakeToken(TokenType::BitwiseAndEqual);
+                break;
+            }
+            else
+            {
+                MakeToken(TokenType::BitwiseAnd);
+                break;
+            }
+        }
+
         case '#':
-            MakeToken(TokenType::Hash);
-            break;
+            MakeToken(TokenType::Hash); break;
+
+        case '@':
+            MakeToken(TokenType::AtSign); break;
+
+        case '(':
+            MakeToken(TokenType::LeftParen); break;
+
+        case ')':
+            MakeToken(TokenType::RightParen); break;
+
+        case '[':
+            MakeToken(TokenType::LeftBracket); break;
+
+        case ']':
+            MakeToken(TokenType::RightBracket); break;
+
+        case '{':
+            MakeToken(TokenType::LeftBrace); break;
+
+        case '}':
+            MakeToken(TokenType::RightBrace); break;
+
+        case ';':
+            MakeToken(TokenType::Semicolon); break;
+
+        case '.':
+            if (Match('.'))
+            {
+                if (Match('.'))
+                {
+                    MakeToken(TokenType::TripleDot); break;
+                }
+                else
+                {
+                    MakeToken(TokenType::DoubleDot); break;
+                }
+            }
+            else
+            {
+                MakeToken(TokenType::Dot); break;
+            }
+
+        case ',':
+            MakeToken(TokenType::Comma); break;
+
+        case ':':
+            MakeToken(TokenType::Colon); break;
+
+        case '$':
+            MakeToken(TokenType::Dollar); break;
+
         case '\n':
-            Advance();
             m_Line++;
             m_Column = 1;
-            m_Start = m_Current;
-            return;
+            break;
+
         case ' ':
+        case '\r':
         case '\t':
-            SkipWhitespace();
-            return;
+            m_Column++;
+            break;
+
         case '"':
             String();
             break;
 
+        case '\'':
+            Char();
+            break;
+
         default:
-            if (IsDigit(Peek()))
+            if (IsDigit(Previous()))
             {
                 Number();
                 break;
             }
-            if (IsAlpha(Peek()))
+            else if (IsAlpha(Peek()))
             {
                 Identifier();
                 break;
             }
 
-            PushError("Unexpected character at line {} in column {}.", m_Line, m_Column);
-            m_HasError = true;
+            break;
         }
-        Advance();
     }
 
     void Scanner::SkipWhitespace()
     {
-        while (true)
-        {
-            switch (Peek())
-            {
-            case ' ':
-            case '\t':
-                Advance();
-                m_Column++;
-                break;
-            case '\n':
-                Advance();
-                m_Line++;
-                m_Column = 1;
-                break;
-            default:
-                SyncCursors();
-                return;
-            }
-        }
     }
 
     void Scanner::SyncCursors()
@@ -250,52 +419,57 @@ namespace Aurora
 
     void Scanner::MakeToken(TokenType type, const std::string& lexeme, const std::string& literal)
     {
-        Token token = Token(m_Line, m_Column, type, lexeme, literal);
-        m_Tokens.emplace_back(token);
-        Index delta = m_Current - m_Start;
-        m_Start = m_Current;
-        m_Column += delta;
+        m_Tokens.emplace_back(Token(m_Line, m_Column, type, lexeme, literal));
     }
 
     void Scanner::Identifier()
     {
-        while (IsAlphaNumeric(Peek()))
+        while (IsAlphaNumeric(Peek()) || Check('_'))
         {
             Advance();
         }
 
-        std::string lexeme = m_Source.substr(m_Start, m_Current - m_Start);
-        MakeToken(keywords.contains(lexeme) ? keywords[lexeme] : TokenType::Identifier, lexeme);
+        MakeToken(TokenType::Identifier, m_Source.substr(m_Start, m_Current - m_Start));
     }
 
     void Scanner::String()
     {
         Advance();
-        while (!Check('"'))
+
+        while (!IsAtEnd() && !Match('"'))
         {
             Advance();
         }
+        
+        MakeToken(TokenType::String, "", m_Source.substr(m_Start + 1, m_Current - m_Start - 2));
+        
+        Advance();
+    }
 
-        std::string string = m_Source.substr(m_Start + 1, m_Current - m_Start - 1);
-        MakeToken(TokenType::String, "", string);
+    void Scanner::Char()
+    {
+        char c = Advance();
+        Advance();
+        Advance();
+
+        MakeToken(TokenType::Char, "", std::format("{}", c));
     }
 
     void Scanner::Number()
     {
-        if (Peek() == '0')
+        if (Previous() == '0')
         {
-            Advance();
             if (Peek() == 'x' || Peek() == 'X')
             {
+                Advance();
+                Advance();
                 HexadecimalNumber();
             }
             else if (Peek() == 'b' || Peek() == 'B')
             {
+                Advance();
+                Advance();
                 BinaryNumber();
-            }
-            else
-            {
-                DecimalNumber();
             }
         }
         else
@@ -306,12 +480,12 @@ namespace Aurora
 
     bool Scanner::IsAtEnd() const
     {
-        return Peek() == '\0' || m_Current >= m_Source.length();
+        return m_Current >= m_Source.length();
     }
 
-    void Scanner::Advance()
+    char Scanner::Advance()
     {
-        m_Current++;
+        return m_Source[m_Current++];
     }
 
     char Scanner::Previous() const
@@ -321,35 +495,26 @@ namespace Aurora
 
     void Scanner::HexadecimalNumber()
     {
-        Advance();
-        Advance();
-
         while (IsHexDigit(Peek()))
         {
             Advance();
         }
 
-        std::string lexeme = m_Source.substr(m_Start, m_Current - m_Start);
-        MakeToken(TokenType::Int, lexeme);
+        MakeToken(TokenType::Hexadecimal, "", m_Source.substr(m_Start, m_Current - m_Start));
     }
 
     void Scanner::BinaryNumber()
     {
-        Advance();
-        Advance();
-
         while (Peek() == '0' || Peek() == '1')
         {
             Advance();
         }
 
-        std::string lexeme = m_Source.substr(m_Start, m_Current - m_Start);
-        MakeToken(TokenType::Int, lexeme);
+        MakeToken(TokenType::Binary, "", m_Source.substr(m_Start, m_Current - m_Start));
     }
 
     void Scanner::DecimalNumber()
     {
-        bool isFloat = false;
         while (IsDigit(Peek()))
         {
             Advance();
@@ -357,30 +522,22 @@ namespace Aurora
 
         if (Peek() == '.')
         {
-            isFloat = true;
             Advance();
-
             while (IsDigit(Peek()))
             {
                 Advance();
             }
+            if(Peek() == '.')
+            {
+                PushError("Invalid float notation, only one dot in floating point number.");
+                m_HasError = true;
+            }
+            MakeToken(TokenType::Float, "", m_Source.substr(m_Start, m_Current - m_Start));
         }
-
-        if (Peek() == 'e' || Peek() == 'E')
+        else
         {
-            Advance();
-            if (Peek() == '+' || Peek() == '-')
-            {
-                Advance();
-            }
-            while (IsDigit(Peek()))
-            {
-                Advance();
-            }
+            MakeToken(TokenType::Decimal, "", m_Source.substr(m_Start, m_Current - m_Start));
         }
-
-        std::string lexeme = m_Source.substr(m_Start, m_Current - m_Start);
-        MakeToken(isFloat ? TokenType::Float : TokenType::Int, lexeme);
     }
 
     bool Scanner::IsHexDigit(char c) const
@@ -388,17 +545,17 @@ namespace Aurora
         return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
     }
 
-    bool Scanner::IsDigit(const char c)
+    bool Scanner::IsDigit(char c)
     {
         return c >= '0' && c <= '9';
     }
 
-    bool Scanner::IsAlpha(const char c)
+    bool Scanner::IsAlpha(char c)
     {
-        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
-    bool Scanner::IsAlphaNumeric(const char c)
+    bool Scanner::IsAlphaNumeric(char c)
     {
         return IsDigit(c) || IsAlpha(c);
     }
@@ -413,12 +570,24 @@ namespace Aurora
         return m_Source[m_Current];
     }
 
-    bool Scanner::Match(const char c)
+    char Scanner::PeekNext() const
     {
-        if (m_Current == m_Source.length()) return false;
-        if (c != m_Source[m_Current + 1]) return false;
+        if(IsAtEnd()) return '\0';
+        return m_Source[m_Current + 1];
+    }
 
-        Advance();
+    bool Scanner::Match(char c)
+    {
+        if (IsAtEnd()) return false;
+        if (m_Source[m_Current] != c) return false;
+
+        m_Current++;
         return true;
+    }
+
+    template <typename... Args>
+    void Scanner::PushError(const std::string& message, Args&&... args)
+    {
+        m_ErrorStack.emplace_back(std::vformat(message, std::make_format_args(std::forward<Args>(args)...)));
     }
 }
