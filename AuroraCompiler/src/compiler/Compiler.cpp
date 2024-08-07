@@ -8,7 +8,9 @@ namespace Aurora
 {
     AurCompiler::AurCompiler()
     {
-        m_Scanner = std::make_unique<Scanner>(ScanSpecification{.LogLexingPass = Disabled, .PushErrors = Disabled});
+        m_Scanner = std::make_unique<Scanner>(ScanSpecification{
+            .LogLexingPass = m_Spec.LogLexingPass, .PushErrors = Enabled
+        });
     }
 
     bool AurCompiler::Compile(const std::string& absoluteMainFilepath)
@@ -17,14 +19,14 @@ namespace Aurora
         std::string source = ReadSourceFile(absoluteMainFilepath);
         ScannedData data = m_Scanner->Scan(source);
 
-        if(m_Scanner->HasError())
+        if (m_Scanner->HasError())
         {
-            for(const auto& error : m_Scanner->GetErrorStack())
+            for (const auto& error : m_Scanner->GetErrorStack())
             {
                 AUR_INFO("Error in file '{}': {}", absoluteMainFilepath, error);
             }
         }
-        
+
         return true;
     }
 

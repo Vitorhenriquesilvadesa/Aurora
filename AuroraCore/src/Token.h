@@ -47,7 +47,6 @@ X(Or) X(DubleQuestionEqual) X(Question) X(TripleDot) X(EndOfFile)
 #define X(name) case TokenType::name: return #name;
             TOKEN_TYPE_LIST
             #undef X
-            default: return "Unknown TokenType";
         }
     }
 

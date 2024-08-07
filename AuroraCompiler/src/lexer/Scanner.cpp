@@ -68,6 +68,8 @@ namespace Aurora
             ScanToken();
         }
 
+        MakeToken(TokenType::EndOfFile);
+
         ScannedData data = ScannedData(m_Tokens);
 
         for (const auto& token : data.Data)
@@ -81,297 +83,312 @@ namespace Aurora
 
     void Scanner::ScanToken()
     {
-        switch(Advance())
+        switch (Advance())
         {
         case '+':
-        {
-            if (Match('+'))
             {
-                MakeToken(TokenType::PlusPlus);
-                break;
+                if (Match('+'))
+                {
+                    MakeToken(TokenType::PlusPlus);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::PlusEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Plus);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::PlusEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Plus);
-                break;
-            }
-        }
 
         case '-':
-        {
-            if (Match('-'))
             {
-                MakeToken(TokenType::MinusMinus);
-                break;
+                if (Match('-'))
+                {
+                    MakeToken(TokenType::MinusMinus);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::MinusEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Minus);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::MinusEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Minus);
-                break;
-            }
-        }
 
         case '*':
-        {
-            if (Match('*'))
             {
-                MakeToken(TokenType::StarStar);
-                break;
+                if (Match('*'))
+                {
+                    MakeToken(TokenType::StarStar);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::StarEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Star);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::StarEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Star);
-                break;
-            }
-        }
 
         case '/':
-        {
-            if (Match('/'))
             {
-                MakeToken(TokenType::SlashSlash);
-                break;
+                if (Match('/'))
+                {
+                    MakeToken(TokenType::SlashSlash);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::SlashEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Slash);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::SlashEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Slash);
-                break;
-            }
-        }
 
         case '%':
-        {
-            if (Match('='))
             {
-                MakeToken(TokenType::ModEqual);
-                break;
+                if (Match('='))
+                {
+                    MakeToken(TokenType::ModEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Mod);
+                    break;
+                }
             }
-            else
-            {
-                MakeToken(TokenType::Mod);
-                break;
-            }
-        }
 
         case '!':
-        {
-            if (Match('='))
             {
-                MakeToken(TokenType::MarkEqual);
-                break;
+                if (Match('='))
+                {
+                    MakeToken(TokenType::MarkEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Mark);
+                    break;
+                }
             }
-            else
-            {
-                MakeToken(TokenType::Mark);
-                break;
-            }
-        }
 
         case '=':
-        {
-            if (Match('='))
             {
-                MakeToken(TokenType::EqualEqual);
-                break;
+                if (Match('='))
+                {
+                    MakeToken(TokenType::EqualEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Equal);
+                    break;
+                }
             }
-            else
-            {
-                MakeToken(TokenType::Equal);
-                break;
-            }
-        }
 
         case '?':
-        {
-            if (Match('?'))
             {
-                if (Match('='))
+                if (Match('?'))
                 {
-                    MakeToken(TokenType::DubleQuestionEqual);
+                    if (Match('='))
+                    {
+                        MakeToken(TokenType::DubleQuestionEqual);
+                        break;
+                    }
+                    else
+                    {
+                        MakeToken(TokenType::QuestionQuestion);
+                        break;
+                    }
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::QuestionEqual);
                     break;
                 }
                 else
                 {
-                    MakeToken(TokenType::QuestionQuestion);
+                    MakeToken(TokenType::Question);
                     break;
                 }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::QuestionEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Question);
-                break;
-            }
-        }
 
         case '>':
-        {
-            if (Match('>'))
             {
-                if (Match('='))
+                if (Match('>'))
                 {
-                    MakeToken(TokenType::RightShiftEqual);
+                    if (Match('='))
+                    {
+                        MakeToken(TokenType::RightShiftEqual);
+                        break;
+                    }
+                    else
+                    {
+                        MakeToken(TokenType::RightShift);
+                        break;
+                    }
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::GreaterEqual);
                     break;
                 }
                 else
                 {
-                    MakeToken(TokenType::RightShift);
+                    MakeToken(TokenType::Greater);
                     break;
                 }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::GreaterEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Greater);
-                break;
-            }
-        }
 
         case '<':
-        {
-            if (Match('<'))
             {
-                if (Match('='))
+                if (Match('<'))
                 {
-                    MakeToken(TokenType::LeftShiftEqual);
+                    if (Match('='))
+                    {
+                        MakeToken(TokenType::LeftShiftEqual);
+                        break;
+                    }
+                    else
+                    {
+                        MakeToken(TokenType::LeftShift);
+                        break;
+                    }
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::LessEqual);
                     break;
                 }
                 else
                 {
-                    MakeToken(TokenType::LeftShift);
+                    MakeToken(TokenType::Less);
                     break;
                 }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::LessEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Less);
-                break;
-            }
-        }
-        
+
         case '|':
-        {
-            if (Match('|'))
             {
-                MakeToken(TokenType::Or);
-                break;
+                if (Match('|'))
+                {
+                    MakeToken(TokenType::Or);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::BitwiseOrEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::Pipe);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::BitwiseOrEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::Pipe);
-                break;
-            }
-        }        
 
         case '&':
-        {
-            if (Match('&'))
             {
-                MakeToken(TokenType::And);
-                break;
+                if (Match('&'))
+                {
+                    MakeToken(TokenType::And);
+                    break;
+                }
+                else if (Match('='))
+                {
+                    MakeToken(TokenType::BitwiseAndEqual);
+                    break;
+                }
+                else
+                {
+                    MakeToken(TokenType::BitwiseAnd);
+                    break;
+                }
             }
-            else if (Match('='))
-            {
-                MakeToken(TokenType::BitwiseAndEqual);
-                break;
-            }
-            else
-            {
-                MakeToken(TokenType::BitwiseAnd);
-                break;
-            }
-        }
 
         case '#':
-            MakeToken(TokenType::Hash); break;
+            MakeToken(TokenType::Hash);
+            break;
 
         case '@':
-            MakeToken(TokenType::AtSign); break;
+            MakeToken(TokenType::AtSign);
+            break;
 
         case '(':
-            MakeToken(TokenType::LeftParen); break;
+            MakeToken(TokenType::LeftParen);
+            break;
 
         case ')':
-            MakeToken(TokenType::RightParen); break;
+            MakeToken(TokenType::RightParen);
+            break;
 
         case '[':
-            MakeToken(TokenType::LeftBracket); break;
+            MakeToken(TokenType::LeftBracket);
+            break;
 
         case ']':
-            MakeToken(TokenType::RightBracket); break;
+            MakeToken(TokenType::RightBracket);
+            break;
 
         case '{':
-            MakeToken(TokenType::LeftBrace); break;
+            MakeToken(TokenType::LeftBrace);
+            break;
 
         case '}':
-            MakeToken(TokenType::RightBrace); break;
+            MakeToken(TokenType::RightBrace);
+            break;
 
         case ';':
-            MakeToken(TokenType::Semicolon); break;
+            MakeToken(TokenType::Semicolon);
+            break;
 
         case '.':
             if (Match('.'))
             {
                 if (Match('.'))
                 {
-                    MakeToken(TokenType::TripleDot); break;
+                    MakeToken(TokenType::TripleDot);
+                    break;
                 }
                 else
                 {
-                    MakeToken(TokenType::DoubleDot); break;
+                    MakeToken(TokenType::DoubleDot);
+                    break;
                 }
             }
             else
             {
-                MakeToken(TokenType::Dot); break;
+                MakeToken(TokenType::Dot);
+                break;
             }
 
         case ',':
-            MakeToken(TokenType::Comma); break;
+            MakeToken(TokenType::Comma);
+            break;
 
         case ':':
-            MakeToken(TokenType::Colon); break;
+            MakeToken(TokenType::Colon);
+            break;
 
         case '$':
-            MakeToken(TokenType::Dollar); break;
+            MakeToken(TokenType::Dollar);
+            break;
 
         case '\n':
             m_Line++;
@@ -398,21 +415,21 @@ namespace Aurora
                 Number();
                 break;
             }
-            else if (IsAlpha(Peek()))
+            else if (IsAlpha(Previous()))
             {
                 Identifier();
                 break;
             }
-            else if(Peek() != '\0')
-            {
-                char c = Peek();
-                MakeToken(TokenType::ErrorToken, "", std::format("{}", c));
-                PushError("Unexpected character '{}' at line {} in column {}.", c, m_Line, m_Column);
-                break;
-            }
             else
             {
-                MakeToken(TokenType::EndOfFile);
+                SkipWhitespace();
+                if (!Check('\0'))
+                {
+                    char c = Previous();
+                    MakeToken(TokenType::ErrorToken, "", std::format("{}", c));
+                    PushError("Unexpected character '{}' at line {} in column {}.", c, m_Line, m_Column);
+                    break;
+                }
             }
 
             break;
@@ -421,6 +438,17 @@ namespace Aurora
 
     void Scanner::SkipWhitespace()
     {
+        while (!IsAtEnd() && (Check(' ') || Check('\n') || Check('\t')))
+        {
+            if (Check('\n'))
+            {
+                m_Line++;
+                m_Column = 1;
+            }
+
+            Advance();
+            SyncCursors();
+        }
     }
 
     void Scanner::SyncCursors()
@@ -443,7 +471,7 @@ namespace Aurora
         }
 
         std::string word = m_Source.substr(m_Start, m_Current - m_Start);
-        
+
         MakeToken(keywords.contains(word) ? keywords[word] : TokenType::Identifier, word);
     }
 
@@ -455,7 +483,7 @@ namespace Aurora
         {
             Advance();
         }
-        
+
         MakeToken(TokenType::String, "", m_Source.substr(m_Start + 1, m_Current - m_Start - 2));
     }
 
@@ -513,6 +541,13 @@ namespace Aurora
         }
 
         MakeToken(TokenType::Hexadecimal, "", m_Source.substr(m_Start, m_Current - m_Start));
+
+        if (IsAlphaNumeric(Peek()))
+        {
+            Advance();
+            PushError("Invalid hexadecimal notation, only permits hexadecimal digits. At line {} in column {}.", m_Line,
+                      m_Column);
+        }
     }
 
     void Scanner::BinaryNumber()
@@ -523,6 +558,12 @@ namespace Aurora
         }
 
         MakeToken(TokenType::Binary, "", m_Source.substr(m_Start, m_Current - m_Start));
+
+        if (IsDigit(Peek()))
+        {
+            Advance();
+            PushError("Invalid binary notation, only permits '0' and '1'. At line {} in column {}.", m_Line, m_Column);
+        }
     }
 
     void Scanner::DecimalNumber()
@@ -539,9 +580,11 @@ namespace Aurora
             {
                 Advance();
             }
-            if(Peek() == '.')
+            if (Peek() == '.')
             {
-                PushError("Invalid float notation, only one dot in floating point number in line {} in column {}.", m_Line, m_Column);
+                Advance();
+                PushError("Invalid float notation, only one dot in floating point number in line {} in column {}.",
+                          m_Line, m_Column);
             }
             MakeToken(TokenType::Float, "", m_Source.substr(m_Start, m_Current - m_Start));
         }
@@ -583,7 +626,7 @@ namespace Aurora
 
     char Scanner::PeekNext() const
     {
-        if(IsAtEnd()) return '\0';
+        if (IsAtEnd()) return '\0';
         return m_Source[m_Current + 1];
     }
 
@@ -593,13 +636,14 @@ namespace Aurora
         if (m_Source[m_Current] != c) return false;
 
         m_Current++;
+        SyncCursors();
         return true;
     }
 
     template <typename... Args>
     void Scanner::PushError(const std::string& message, Args&&... args)
     {
-        if(m_Spec.PushErrors)
+        if (m_Spec.PushErrors)
         {
             m_ErrorStack.emplace_back(std::vformat(message, std::make_format_args(std::forward<Args>(args)...)));
             m_HasError = true;

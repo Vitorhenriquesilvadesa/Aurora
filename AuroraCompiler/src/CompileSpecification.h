@@ -7,7 +7,7 @@ namespace Aurora
     struct AUR_API AurCompileSpecification
     {
         Spec LogCompilation               : DefaultBit(Disabled);
-        Spec LogLexingPass                : DefaultBit(Disabled);
+        Spec LogLexingPass                : DefaultBit(Enabled);
         Spec LogParsingPass               : DefaultBit(Disabled);
         Spec LogPolimorficPass            : DefaultBit(Disabled);
         Spec LogMultiIDCheckingPass       : DefaultBit(Disabled);
