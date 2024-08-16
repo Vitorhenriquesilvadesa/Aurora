@@ -4,6 +4,7 @@
 
 #include "../CompileSpecification.h"
 #include "../lexer/Scanner.h"
+#include "../parser/parser/Parser.h"
 
 #define COMPILE_LOG_INFO(message, ...) \
     do { \
@@ -26,6 +27,7 @@ namespace Aurora
         
     private:
         std::unique_ptr<Scanner> m_Scanner;
+        std::unique_ptr<Parser> m_Parser;
         AurCompileSpecification m_Spec;
     };
 }

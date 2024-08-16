@@ -1,2 +1,4 @@
-﻿  VirtualMachine.cpp
+﻿  VirtualMachineSpecification.cpp
+  VirtualMachine.cpp
+  Gerando Código...
   AuroraVM.vcxproj -> C:\Github\CPlusPlus\Aurora\bin\Debug-windows-x86_64\AuroraVM\AuroraVM.lib

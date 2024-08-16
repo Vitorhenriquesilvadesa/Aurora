@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "Logging.h"
+#include "../parser/parser/Parser.h"
 
 namespace Aurora
 {
@@ -11,6 +12,8 @@ namespace Aurora
         m_Scanner = std::make_unique<Scanner>(ScanSpecification{
             .LogLexingPass = m_Spec.LogLexingPass, .PushErrors = Enabled
         });
+
+        m_Parser = std::make_unique<Parser>();
     }
 
     bool AurCompiler::Compile(const std::string& absoluteMainFilepath)
@@ -26,6 +29,8 @@ namespace Aurora
                 AUR_INFO("Error in file '{}': {}", absoluteMainFilepath, error);
             }
         }
+
+        m_Parser->ParseScannedData(data);
 
         return true;
     }

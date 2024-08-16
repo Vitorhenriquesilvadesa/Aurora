@@ -3,13 +3,13 @@
 
 namespace Aurora
 {
-	class AurSyntaxTreeProcessor;
-
-	class AUR_API AurSyntaxTreeNode
-	{
-	public:
-		AurSyntaxTreeNode() = default;
-		virtual void AcceptProcessor(AurSyntaxTreeProcessor& processor) = 0;
-		virtual ~AurSyntaxTreeNode() = default;
-	};
+    class AUR_API AurSyntaxTreeProcessor;
+    
+    class AUR_API AurSyntaxTreeNode
+    {
+    public:
+        AurSyntaxTreeNode() = default;
+        virtual void AcceptNodeProcessor(AurSyntaxTreeProcessor* processor) = 0;
+        virtual ~AurSyntaxTreeNode() = default;
+    };
 }

@@ -7,8 +7,6 @@ namespace Aurora
     {
     public:
         void ProcessNode(AurSyntaxTreeNode* node) override;
-        void ProcessBinaryExpressionNode(BinaryExpressionNode* node) override;
-        void ProcessUnaryExpressionNode(UnaryExpressionNode* node) override;
         void ProcessLiteralExpressionNode(LiteralExpressionNode* node) override;
     };
 

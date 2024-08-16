@@ -1,10 +1,58 @@
-﻿  Scanner.cpp
-C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(60,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+﻿  CompileSpecification.cpp
+  Compiler.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(59,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(60,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(60,21): warning C4251: 'Aurora::Scanner::m_Source': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(61,28): warning C4251: 'Aurora::Scanner::m_Tokens': class 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(62,34): warning C4251: 'Aurora::Scanner::m_ErrorStack': class 'std::vector<std::string,std::allocator<std::string>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<std::string,std::allocator<std::string>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(30,34): warning C4251: 'Aurora::AurCompiler::m_Scanner': class 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::AurCompiler'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  consulte a declaração de 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(31,33): warning C4251: 'Aurora::AurCompiler::m_Parser': class 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::AurCompiler'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  consulte a declaração de 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(13,57): warning C4251: 'Aurora::ParsedData::Nodes': class 'std::vector<std::shared_ptr<Aurora::AurSyntaxTreeNode>,std::allocator<std::shared_ptr<Aurora::AurSyntaxTreeNode>>>' precisa ter dll-interface para ser usado por clientes de struct 'Aurora::ParsedData'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<std::shared_ptr<Aurora::AurSyntaxTreeNode>,std::allocator<std::shared_ptr<Aurora::AurSyntaxTreeNode>>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(39,28): warning C4251: 'Aurora::Parser::m_Tokens': class 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Parser'
+  (compilando o arquivo fonte 'src/compiler/Compiler.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>'
+  
+  ScanSpecification.cpp
+  Scanner.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(59,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
   (compilando o arquivo fonte 'src/lexer/Scanner.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
   consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
   
-C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(61,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(60,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
   (compilando o arquivo fonte 'src/lexer/Scanner.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
   consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
@@ -24,4 +72,114 @@ C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(62,34): warning C4
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
   consulte a declaração de 'std::vector<std::string,std::allocator<std::string>>'
   
-  AuroraCompiler.vcxproj -> C:\Github\CPlusPlus\Aurora\bin\Debug-windows-x86_64\AuroraCompiler\AuroraCompiler.lib
+  ExpressionNode.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.cpp(12,9): error C2027: uso de tipo indefinido 'Aurora::AurSyntaxTreeProcessor'
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\Ast.h(6,8):
+  consulte a declaração de 'Aurora::AurSyntaxTreeProcessor'
+  
+  Parser.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(59,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(60,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(13,57): warning C4251: 'Aurora::ParsedData::Nodes': class 'std::vector<std::shared_ptr<Aurora::AurSyntaxTreeNode>,std::allocator<std::shared_ptr<Aurora::AurSyntaxTreeNode>>>' precisa ter dll-interface para ser usado por clientes de struct 'Aurora::ParsedData'
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<std::shared_ptr<Aurora::AurSyntaxTreeNode>,std::allocator<std::shared_ptr<Aurora::AurSyntaxTreeNode>>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(39,28): warning C4251: 'Aurora::Parser::m_Tokens': class 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Parser'
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(40,15): error C3646: 'm_Current': especificador de substituição desconhecido
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(40,24): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.h(19,20): error C2614: 'Aurora::Parser': inicialização de membro inválida: 'm_Current' não é uma base ou membro
+  (compilando o arquivo fonte 'src/parser/parser/Parser.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(20,9): error C2065: 'm_Current': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,24): error C2259: 'Aurora::LiteralExpressionNode': não é possível instanciar a classe abstrata
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.h(14,11):
+  consulte a declaração de 'Aurora::LiteralExpressionNode'
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,24):
+  devido aos seguintes membros:
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,24):
+  'void Aurora::AurSyntaxTreeNode::AcceptProcessor(Aurora::AurSyntaxTreeProcessor &)': é abstrato
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\Ast.h(12,16):
+  consulte a declaração de 'Aurora::AurSyntaxTreeNode::AcceptProcessor'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45): error C2259: 'Aurora::LiteralExpressionNode': não é possível instanciar a classe abstrata
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.h(14,11):
+  consulte a declaração de 'Aurora::LiteralExpressionNode'
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  devido aos seguintes membros:
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  'void Aurora::AurSyntaxTreeNode::AcceptProcessor(Aurora::AurSyntaxTreeProcessor &)': é abstrato
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\Ast.h(12,16):
+  consulte a declaração de 'Aurora::AurSyntaxTreeNode::AcceptProcessor'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45): error C2665: 'Aurora::LiteralExpressionNode::LiteralExpressionNode': nenhuma função sobrecarregada pode converter todos os tipos de argumento
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.h(21,5):
+  poderia ser 'Aurora::LiteralExpressionNode::LiteralExpressionNode(Aurora::LiteralExpressionNode &&)'
+  	C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  	'Aurora::LiteralExpressionNode::LiteralExpressionNode(Aurora::LiteralExpressionNode &&)': não é possível converter um argumento 1 de 'Aurora::AurValue' em 'Aurora::LiteralExpressionNode &&'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,46):
+  		Razão: não é possível converter de 'Aurora::AurValue' para 'Aurora::LiteralExpressionNode'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,46):
+  		Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.h(21,5):
+  ou       'Aurora::LiteralExpressionNode::LiteralExpressionNode(const Aurora::LiteralExpressionNode &)'
+  	C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  	'Aurora::LiteralExpressionNode::LiteralExpressionNode(const Aurora::LiteralExpressionNode &)': não é possível converter um argumento 1 de 'Aurora::AurValue' em 'const Aurora::LiteralExpressionNode &'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,46):
+  		Razão: não é possível converter de 'Aurora::AurValue' para 'const Aurora::LiteralExpressionNode'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,46):
+  		Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.h(17,9):
+  ou       'Aurora::LiteralExpressionNode::LiteralExpressionNode(Aurora::AurObject *)'
+  	C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  	'Aurora::LiteralExpressionNode::LiteralExpressionNode(Aurora::AurObject *)': não é possível converter um argumento 1 de 'Aurora::AurValue' em 'Aurora::AurObject *'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,46):
+  		Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(55,45):
+  ao tentar corresponder a lista de argumentos '(Aurora::AurValue)'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(81,25): error C2065: 'm_Current': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(87,25): error C2065: 'm_Current': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp(111,25): error C2065: 'm_Current': identificador não declarado
+  AurSyntaxTreeProcessor.cpp
+  HighLevelSyntaxTreeProcessor.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.h(10,42): error C2061: erro de sintaxe: identificador 'BinaryExpressionNode'
+  (compilando o arquivo fonte 'src/parser/processor/HighLevelSyntaxTreeProcessor.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.h(11,41): error C2061: erro de sintaxe: identificador 'UnaryExpressionNode'
+  (compilando o arquivo fonte 'src/parser/processor/HighLevelSyntaxTreeProcessor.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.h(10,14): error C3668: 'Aurora::HighLevelSyntaxTreeProcessor::ProcessBinaryExpressionNode': método com especificador de substituição 'override' não substituiu nenhum método de classe base
+  (compilando o arquivo fonte 'src/parser/processor/HighLevelSyntaxTreeProcessor.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.h(11,14): error C3668: 'Aurora::HighLevelSyntaxTreeProcessor::ProcessUnaryExpressionNode': método com especificador de substituição 'override' não substituiu nenhum método de classe base
+  (compilando o arquivo fonte 'src/parser/processor/HighLevelSyntaxTreeProcessor.cpp')
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(9,88): error C2761: 'void Aurora::HighLevelSyntaxTreeProcessor::ProcessBinaryExpressionNode(void)': a redeclaração de membro não é permitida
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(9,68): error C2065: 'BinaryExpressionNode': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(9,90): error C2065: 'node': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(10,5): error C2143: erro de sintaxe: ';' ausente antes de '{'
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(10,5): error C2447: '{': faltando cabeçalho de função (lista formal de estilo antigo?)
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(13,86): error C2761: 'void Aurora::HighLevelSyntaxTreeProcessor::ProcessUnaryExpressionNode(void)': a redeclaração de membro não é permitida
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(13,67): error C2065: 'UnaryExpressionNode': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(13,88): error C2065: 'node': identificador não declarado
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(14,5): error C2143: erro de sintaxe: ';' ausente antes de '{'
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp(14,5): error C2447: '{': faltando cabeçalho de função (lista formal de estilo antigo?)
+  Gerando Código...
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(51,1): warning C4715: 'Aurora::TokenTypeToString': nem todos os caminhos de controle retornam um valor

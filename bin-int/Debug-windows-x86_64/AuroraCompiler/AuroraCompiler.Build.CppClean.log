@@ -5,6 +5,12 @@ c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\scannedda
 c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\scanspecification.obj
 c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\compiler.obj
 c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\compilespecification.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\aursyntaxtreeprocessor.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\unaryexpressionnode.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\literalexpressionnode.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\binaryexpressionnode.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\parser.obj
+c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\highlevelsyntaxtreeprocessor.obj
 c:\github\cplusplus\aurora\bin\debug-windows-x86_64\auroracompiler\auroracompiler.lib
 c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\auroracompiler.tlog\cl.command.1.tlog
 c:\github\cplusplus\aurora\bin-int\debug-windows-x86_64\auroracompiler\auroracompiler.tlog\cl.items.tlog

@@ -1,1 +1,65 @@
-﻿  Aurora.vcxproj -> C:\Github\CPlusPlus\Aurora\bin\Debug-windows-x86_64\Aurora\Aurora.exe
+﻿  CommandReceptor.cpp
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(59,21): warning C4251: 'Aurora::Token::lexeme': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCore\src\Token.h(60,21): warning C4251: 'Aurora::Token::literal': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Token'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(60,21): warning C4251: 'Aurora::Scanner::m_Source': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xstring(2337,7):
+  consulte a declaração de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(61,28): warning C4251: 'Aurora::Scanner::m_Tokens': class 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<Aurora::Token,std::allocator<Aurora::Token>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.h(62,34): warning C4251: 'Aurora::Scanner::m_ErrorStack': class 'std::vector<std::string,std::allocator<std::string>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::Scanner'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\vector(436,7):
+  consulte a declaração de 'std::vector<std::string,std::allocator<std::string>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(30,34): warning C4251: 'Aurora::AurCompiler::m_Scanner': class 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::AurCompiler'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  consulte a declaração de 'std::unique_ptr<Aurora::Scanner,std::default_delete<Aurora::Scanner>>'
+  
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(31,33): warning C4251: 'Aurora::AurCompiler::m_Parser': class 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>' precisa ter dll-interface para ser usado por clientes de class 'Aurora::AurCompiler'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  consulte a declaração de 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3138,27): error C2027: uso de tipo indefinido 'Aurora::Parser'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(17,11):
+  consulte a declaração de 'Aurora::Parser'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3138,27):
+  o contexto de instanciação do modelo (o mais antigo primeiro) é
+  	C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(31,33):
+  	consulte a referência à instanciação 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>' do modelo da classe que está sendo compilada
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3158,8):
+  	consulte a referência à instanciação 'std::default_delete<Aurora::Parser>' do modelo da classe que está sendo compilada
+  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3137,23):
+  	ao compilar a função de membro 'void std::default_delete<Aurora::Parser>::operator ()(_Ty *) noexcept const' do modelo da classe
+          with
+          [
+              _Ty=Aurora::Parser
+          ]
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3249,33):
+  		veja a primeira referência a 'std::default_delete<Aurora::Parser>::operator ()' em 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>::~unique_ptr'
+  		C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(33,5):
+  		veja a primeira referência a 'std::unique_ptr<Aurora::Parser,std::default_delete<Aurora::Parser>>::~unique_ptr' em 'Aurora::AurCompiler::~AurCompiler'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3138,25): error C2338: static_assert failed: 'can't delete an incomplete type'
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3139,9): warning C4150: exclusão de ponteiro para tipo incompleto 'Aurora::Parser'; nenhum destruidor chamado
+  (compilando o arquivo fonte 'src/CommandReceptor.cpp')
+  C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.h(17,11):
+  consulte a declaração de 'Aurora::Parser'
+  

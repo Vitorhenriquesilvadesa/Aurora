@@ -3,9 +3,7 @@ C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\compiler\Compiler.cpp;C:\Github\CP
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\ScanSpecification.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\ScanSpecification.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\ScannedData.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\ScannedData.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\lexer\Scanner.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\Scanner.obj
-C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\BinaryExpressionNode.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\BinaryExpressionNode.obj
-C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\LiteralExpressionNode.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\LiteralExpressionNode.obj
-C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\UnaryExpressionNode.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\UnaryExpressionNode.obj
+C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\nodes\expression\ExpressionNode.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\ExpressionNode.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\parser\Parser.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\Parser.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\AurSyntaxTreeProcessor.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\AurSyntaxTreeProcessor.obj
 C:\Github\CPlusPlus\Aurora\AuroraCompiler\src\parser\processor\HighLevelSyntaxTreeProcessor.cpp;C:\Github\CPlusPlus\Aurora\bin-int\Debug-windows-x86_64\AuroraCompiler\HighLevelSyntaxTreeProcessor.obj
