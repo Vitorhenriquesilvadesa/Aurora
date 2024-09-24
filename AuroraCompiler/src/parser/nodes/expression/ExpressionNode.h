@@ -4,8 +4,6 @@
 
 namespace Aurora
 {
-    struct AUR_API AurObject;
-    
     class AUR_API ExpressionNode : public AurSyntaxTreeNode
     {
     public:

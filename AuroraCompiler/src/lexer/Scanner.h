@@ -26,6 +26,7 @@ namespace Aurora
         template <typename... Args>
         void PushError(const std::string& message, Args&&... args);
         void ScanToken();
+        void Comment();
         void SkipWhitespace();
         void SyncCursors();
         void MakeToken(TokenType type, const std::string& lexeme = "", const std::string& literal = "");

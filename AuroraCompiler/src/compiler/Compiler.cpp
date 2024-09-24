@@ -30,7 +30,7 @@ namespace Aurora
             }
         }
 
-        m_Parser->ParseScannedData(data);
+        // m_Parser->ParseScannedData(data);
 
         return true;
     }

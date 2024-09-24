@@ -106,7 +106,7 @@ namespace Aurora
 
     bool Parser::IsAtEnd()
     {
-        return Check(TokenType::EndOfFile);
+        return Peek().type == TokenType::EndOfFile;
     }
 
     void Parser::Synchronize()
